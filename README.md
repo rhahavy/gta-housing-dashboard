@@ -2,7 +2,7 @@
 
 An end-to-end data analytics project examining 26 years of Greater Toronto Area housing market data. Built to demonstrate a full analytical pipeline — from raw data to interactive dashboard — and to answer a question most housing dashboards ignore: **did the 2022 rate hikes actually help buyers?**
 
-**[Live Dashboard →](https://your-username.github.io/gta-housing-dashboard)**
+**[Live Dashboard →](https://rhahavy.github.io/gta-housing-dashboard/)**
 
 ---
 
