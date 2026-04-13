@@ -633,81 +633,77 @@
   <!-- INSIGHT CARDS -->
   <div class="insights-row" id="insights-forecast"></div>
 
-  <!-- SUPPLY SECTION -->
-  <div class="section-label">Housing starts · <span style="color:var(--green);font-size:10px">CMHC Feb 2026 — single month snapshot</span></div>
-  <div class="two-col" style="margin-bottom:16px">
-    <div class="chart-card" style="display:flex;flex-direction:column;gap:12px">
-      <div>
-        <div class="chart-title">Starts by zone</div>
-        <div class="chart-subtitle">Stacked by dwelling type — scroll to see all zones</div>
-      </div>
-      <div style="height:300px;overflow-y:auto;">
-        <div id="geo-bar-container-starts" style="position:relative;">
-          <canvas id="chartStarts" role="img" aria-label="Housing starts by GTA zone February 2026"></canvas>
-        </div>
-      </div>
-      <div class="source-tag">Source: <span class="src-curr">CMHC Starts & Completions Survey · Feb 2026</span></div>
+  <!-- SUPPLY -->
+  <div class="section-label">New Housing Supply <span style="color:var(--green);font-size:10px">· CMHC Feb 2026</span></div>
+
+  <div class="kpi-grid" style="margin-bottom:16px">
+    <div class="kpi">
+      <div class="kpi-label">Apartment Share</div>
+      <div class="kpi-value" style="color:var(--accent)">80%+</div>
+      <div class="kpi-sub">of all new GTA units</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div class="chart-card">
-        <div class="chart-title" style="margin-bottom:4px">Supply mix</div>
-        <div class="chart-subtitle" style="margin-bottom:14px">Composition of all new GTA units</div>
-        <div style="position:relative;height:180px"><canvas id="chartStartsDonut" role="img" aria-label="Housing starts composition by dwelling type"></canvas></div>
+    <div class="kpi">
+      <div class="kpi-label">York Region Share</div>
+      <div class="kpi-value" style="color:var(--amber)">63%</div>
+      <div class="kpi-sub">of all apartment starts</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Toronto C01 Starts</div>
+      <div class="kpi-value" style="color:var(--red)">~0</div>
+      <div class="kpi-sub">vacancy 0.9% — no new supply</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Single-Detached</div>
+      <div class="kpi-value" style="color:var(--text3)">↓ Near zero</div>
+      <div class="kpi-sub">developer pivot to apartments</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-title" style="margin-bottom:4px">Starts by Zone — Feb 2026</div>
+      <div class="chart-subtitle" style="margin-bottom:12px">Units by dwelling type</div>
+      <div style="position:relative;height:300px">
+        <canvas id="chartStarts"></canvas>
       </div>
-      <div class="chart-card" style="border-left:3px solid var(--green);padding-left:16px">
-        <div style="font-size:11px;color:var(--green);font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.07em">Supply signal</div>
-        <div style="font-size:13px;color:var(--text2);line-height:1.6">Richmond Hill/Vaughan/King alone accounts for <strong style="color:var(--text)">63%</strong> of all GTA apartment starts. Apartments make up <strong style="color:var(--text)">80%+</strong> of all new units — single-detached supply remains severely constrained.</div>
+      <div class="source-tag" style="margin-top:8px">CMHC Starts &amp; Completions Survey · Feb 2026</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title" style="margin-bottom:4px">Supply Mix</div>
+      <div class="chart-subtitle" style="margin-bottom:12px">All new GTA units by dwelling type</div>
+      <div style="position:relative;height:220px"><canvas id="chartStartsDonut"></canvas></div>
+      <div style="margin-top:16px;padding:12px 14px;background:rgba(239,68,68,0.07);border-radius:8px;border-left:3px solid var(--red);font-size:12px;color:var(--text2);line-height:1.6">
+        New apartments are concentrated in York Region suburbs where demand is softest. Inner Toronto — vacancy under 1% — has near-zero new construction.
       </div>
     </div>
   </div>
 
-  <!-- PRICE OUTLOOK SECTION -->
-  <div class="section-label">Price Outlook · <span style="color:var(--accent);font-size:10px">2022 baseline → 2026 estimate → 2027–2032 projection</span></div>
+  <!-- PRICE OUTLOOK -->
+  <div class="section-label" style="margin-top:8px">Price Outlook <span style="color:var(--accent);font-size:10px">· 1996–2022 actual · 2026 estimate · 2027–2032 projection</span></div>
 
-  <!-- Assumption controls -->
-  <div class="chart-card" style="margin-bottom:16px;padding:16px 20px">
-    <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap">
-      <div style="font-size:12px;font-weight:500;color:var(--text)">Projection assumptions</div>
-      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:240px">
-        <label style="font-size:12px;color:var(--text3);white-space:nowrap">Annual growth rate</label>
-        <input type="range" id="proj-rate" min="1" max="8" step="0.5" value="4"
-          style="flex:1;accent-color:var(--accent)" oninput="renderPriceOutlook()">
-        <span id="proj-rate-display" style="font-size:13px;font-weight:600;color:var(--accent);font-family:'DM Mono',monospace;min-width:36px">4.0%</span>
-      </div>
-      <div style="font-size:11px;color:var(--text3)">Historic avg: <strong style="color:var(--text2)">6.9%/yr</strong> (1996–2022) · Conservative: 3% · Base: 4% · Optimistic: 7%</div>
-    </div>
-  </div>
-
-  <!-- Chart -->
-  <div class="chart-card" style="margin-bottom:16px">
+  <div class="chart-card">
     <div class="chart-header">
       <div>
-        <div class="chart-title">GTA Average Home Price — Historical & Projected</div>
-        <div class="chart-subtitle">Actual 1996–2022 (TRREB) · 2026 estimate (CMHC-adjusted) · 2027–2032 projection at selected growth rate</div>
+        <div class="chart-title">GTA Average Home Price — Historical &amp; Projected</div>
+        <div class="chart-subtitle">TRREB 1996–2022 · 2026 CMHC estimate · 2027–2032 at selected growth rate</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <label style="font-size:11px;color:var(--text3);white-space:nowrap">Growth rate</label>
+        <input type="range" id="proj-rate" min="1" max="8" step="0.5" value="4" style="width:100px;accent-color:var(--accent)" oninput="renderPriceOutlook()">
+        <span id="proj-rate-display" style="font-size:13px;font-weight:600;color:var(--accent);font-family:'DM Mono',monospace;min-width:38px">4.0%</span>
       </div>
     </div>
-    <div style="position:relative;height:300px"><canvas id="chartOutlook"></canvas></div>
-    <div style="display:flex;gap:20px;margin-top:10px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)">
-        <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#4f8ef7" stroke-width="2"/></svg>
-        Historical (TRREB 1996–2022)
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)">
-        <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#22c55e" stroke-width="2.5"/></svg>
-        2026 Estimate
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)">
-        <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/></svg>
-        2027–2032 Projection
-      </div>
-      <div style="margin-left:auto;font-size:10px;color:var(--text3)">Projection is illustrative — not a financial forecast</div>
+    <div style="position:relative;height:260px"><canvas id="chartOutlook"></canvas></div>
+    <div style="display:flex;gap:20px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap;align-items:center">
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><svg width="22" height="3"><line x1="0" y1="1.5" x2="22" y2="1.5" stroke="#4f8ef7" stroke-width="2"/></svg>Historical</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><svg width="22" height="3"><line x1="0" y1="1.5" x2="22" y2="1.5" stroke="#22c55e" stroke-width="2.5"/></svg>2026 Est.</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><svg width="22" height="3"><line x1="0" y1="1.5" x2="22" y2="1.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/></svg>2027–2032 Projection</div>
+      <div style="margin-left:auto;font-size:10px;color:var(--text3)">Hist. avg: 6.9%/yr · Conservative: 3% · Base: 4% · Optimistic: 7%</div>
     </div>
   </div>
 
-  <!-- Projection summary cards -->
-  <div id="proj-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px"></div>
-
-  <div class="source-tag">Sources: TRREB MLS 1996–2022 · CMHC market outlook Q1 2026 (adjusted) · Projections use compound annual growth at selected rate</div>
+  <div id="proj-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px"></div>
+  <div class="source-tag" style="margin-top:8px">TRREB MLS 1996–2022 · CMHC Q1 2026 · Projections are illustrative, not financial advice</div>
 
 </div>
 
@@ -1682,7 +1678,67 @@ window.renderForecast = function renderForecast() {
   }
 
 
-  // Render price outlook
+  // ── SUPPLY CHARTS ──────────────────────────────────────────
+  const startCtxEl = document.getElementById('chartStarts');
+  if (startCtxEl && !startCtxEl._chart) {
+    const zones = STARTS_2026.filter(z => z.total > 0);
+    const sc = new Chart(startCtxEl.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: zones.map(z => z.zone),
+        datasets: [
+          { label: 'Apartment', data: zones.map(z => z.apartment), backgroundColor: 'rgba(79,142,247,0.8)', borderRadius: 3 },
+          { label: 'Row/Town', data: zones.map(z => z.row), backgroundColor: 'rgba(34,197,94,0.7)', borderRadius: 3 },
+          { label: 'Single', data: zones.map(z => z.single), backgroundColor: 'rgba(245,158,11,0.7)', borderRadius: 3 },
+          { label: 'Semi', data: zones.map(z => z.semi), backgroundColor: 'rgba(239,68,68,0.6)', borderRadius: 3 },
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 10, padding: 10, font: { size: 11 } } },
+          tooltip: { ...TOOLTIP_OPTS }
+        },
+        scales: {
+          x: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+    startCtxEl._chart = sc;
+  }
+
+  const donutEl = document.getElementById('chartStartsDonut');
+  if (donutEl && !donutEl._chart) {
+    const totalApt   = STARTS_2026.reduce((s, z) => s + z.apartment, 0);
+    const totalRow   = STARTS_2026.reduce((s, z) => s + z.row, 0);
+    const totalSingle= STARTS_2026.reduce((s, z) => s + z.single, 0);
+    const totalSemi  = STARTS_2026.reduce((s, z) => s + z.semi, 0);
+    const dc = new Chart(donutEl.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Apartment', 'Row/Townhouse', 'Single-Detached', 'Semi-Detached'],
+        datasets: [{ data: [totalApt, totalRow, totalSingle, totalSemi],
+          backgroundColor: ['rgba(79,142,247,0.8)','rgba(34,197,94,0.7)','rgba(245,158,11,0.7)','rgba(239,68,68,0.6)'],
+          borderWidth: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 11 } } },
+          tooltip: { ...TOOLTIP_OPTS, callbacks: { label: ctx => {
+            const total = totalApt + totalRow + totalSingle + totalSemi;
+            return ctx.label + ': ' + ctx.parsed + ' units (' + ((ctx.parsed/total)*100).toFixed(0) + '%)';
+          }}}
+        },
+        cutout: '65%'
+      }
+    });
+    donutEl._chart = dc;
+  }
+
+  // ── PRICE OUTLOOK ──────────────────────────────────────────
   setTimeout(renderPriceOutlook, 50);
 }
 

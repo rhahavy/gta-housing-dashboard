@@ -1,42 +1,39 @@
 # GTA Housing Market Dashboard
 
-Toronto's housing market has not had a sustained buyer's market in over 20 years. This dashboard examines why — using 26 years of transaction data, current rental conditions, and a deep learning forecast — and what the numbers mean for buyers, renters, and policymakers today.
+An end-to-end data analytics project examining 26 years of Greater Toronto Area housing market data. Built to demonstrate a full analytical pipeline — from raw data to interactive dashboard — and to answer a question most housing dashboards ignore: **did the 2022 rate hikes actually help buyers?**
 
 **[Live Dashboard →](https://your-username.github.io/gta-housing-dashboard)**
 
 ---
 
-## What I Found
+## The Finding
 
-Rate hikes did not restore affordability. A buyer in October 2022 paid more per month than a buyer at the March 2022 price peak, despite a 16% price decline, because mortgage rates tripled simultaneously.
-
-The rental market is structurally bifurcated. Tenants who stay in place pay 32.7% less than tenants entering the market. This gap — created by rent control and low vacancy — is not correcting; it is widening.
-
-New supply is being built in the wrong places. February 2026 construction data shows 63% of apartment starts concentrated in suburban York Region, while inner Toronto — where vacancy is lowest and job density is highest — has near-zero new units under construction.
+Monthly carrying costs on a GTA home rose 17% after the 2022 rate hikes — even as prices fell 16%. Buyers who waited for the "correction" paid more per month than buyers at the March 2022 price peak. This dashboard shows why, and what it means going forward.
 
 ---
 
-## Dashboard Features
+## What's Inside
 
-| Tab | What it answers |
-|-----|-----------------|
-| Market Overview | 26-year price trend with annotated events + hero chart showing rate hikes made buyers worse off |
-| Supply & Demand | SNLR, MOI, DOM, SP/LP — the mechanics behind price movements |
-| Geographic View | Community-level choropleth across 65 GTA regions |
-| Rental Market 2025 | CMHC vacancy, rents by bedroom, condo vs purpose-built gap |
-| Outlook & Forecast | CMHC 2026 starts + TFT 2023 price forecasts by community |
-| **Decision Tools** | **Personal Affordability Engine · Rent vs Buy Break-Even · Community Comparison** |
-
----
-
-## Architecture
-
-TRREB scrape (Selenium) → pandas cleaning → Jupyter EDA → PyTorch TFT model → single-file HTML dashboard (Chart.js + SVG)
-
-136K rows · 5 data sources · No frameworks · Deploys to GitHub Pages
+| Tab | Content |
+|-----|---------|
+| **Market Overview** | 26-year price trend, rate hike impact chart, affordability index, 4 KPI cards |
+| **Supply & Demand** | SNLR, months of inventory, days on market, SP/LP ratio — the mechanics behind price movements |
+| **Geographic View** | SVG choropleth across 65 GTA communities, top 5 rankings, market conditions donut |
+| **Rental Market 2025** | CMHC vacancy, rents by bedroom type, condo vs purpose-built gap, turnover premium |
+| **Supply & Outlook** | Feb 2026 housing starts, 1996–2032 price projection with adjustable growth rate slider |
+| **Decision Tools** | Personal affordability engine, rent vs buy break-even, community comparison table |
 
 ---
 
-## Skills
+## Stack
 
-Python · pandas · Selenium · time series analysis · deep learning (TFT/PyTorch) · Chart.js · SVG choropleth · financial modelling · GitHub Pages
+- **Data**: 136K TRREB MLS transactions (1996–2022), CMHC Rental Market Survey (Oct 2025), CMHC Housing Starts (Feb 2026)
+- **Analysis**: Python · pandas · Jupyter
+- **Visualization**: Chart.js · SVG (hand-coded choropleth) · vanilla JS
+- **Deployment**: Single-file HTML · GitHub Pages · no frameworks · no build step
+
+---
+
+## Key Skills Demonstrated
+
+`data cleaning` `exploratory analysis` `time series` `geospatial visualization` `financial modelling` `interactive dashboards` `Python` `pandas` `Chart.js` `SQL-adjacent data wrangling`
