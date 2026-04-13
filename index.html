@@ -1939,16 +1939,34 @@ window.updateRvB = function updateRvB() {
         const {ctx, chartArea:{left,right,top,bottom}, scales:{x}} = chart;
         const xPx = x.getPixelForValue(breakEvenYr);
         ctx.save();
+        // Dashed vertical line
         ctx.setLineDash([5,4]);
         ctx.strokeStyle='#22c55e'; ctx.lineWidth=1.5;
         ctx.beginPath(); ctx.moveTo(xPx,top); ctx.lineTo(xPx,bottom); ctx.stroke();
         ctx.setLineDash([]);
-        ctx.fillStyle='#22c55e'; ctx.font="600 10px 'DM Sans',sans-serif";
-        // Draw label LEFT of line if near right edge, right otherwise
+        // Label with background pill
         const labelText = 'Break-even: Yr ' + breakEvenYr;
-        ctx.textAlign = xPx > right - 90 ? 'right' : 'left';
-        const labelX = xPx > right - 90 ? xPx - 6 : xPx + 6;
-        ctx.fillText(labelText, labelX, top + 14);
+        ctx.font = "600 11px 'DM Sans',sans-serif";
+        const tw = ctx.measureText(labelText).width;
+        const pad = 6;
+        const lh = 18;
+        const nearRight = xPx > right - tw - pad*2 - 10;
+        const lx = nearRight ? xPx - tw - pad*2 - 6 : xPx + 6;
+        const ly = top + 8;
+        // Draw pill background
+        ctx.fillStyle = 'rgba(17,24,39,0.85)';
+        ctx.beginPath();
+        ctx.roundRect(lx, ly, tw + pad*2, lh, 4);
+        ctx.fill();
+        // Draw border
+        ctx.strokeStyle = '#22c55e';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        // Draw text
+        ctx.fillStyle = '#22c55e';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(labelText, lx + pad, ly + lh/2);
         ctx.restore();
       }
     }]
